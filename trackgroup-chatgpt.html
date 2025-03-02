@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Group Dashboard</title>
+  <style>
+    /* Basic resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Container to center content and limit width on larger screens */
+    .container {
+      max-width: 400px; /* For mobile-friendly design, limit width */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      min-height: 100vh; /* Fill screen height on mobile */
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .top-bar h1 {
+      font-size: 1.5rem;
+      color: #7b49ff;
+    }
+    .exit-button {
+      background-color: #ff6b6b;
+      color: #fff;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .exit-button:hover {
+      background-color: #e65a5a;
+    }
+
+    /* Card styling */
+    .card {
+      background-color: #faf9ff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .card-header h2 {
+      font-size: 1rem;
+      color: #333;
+      font-weight: 600;
+    }
+    .card-header .active-count {
+      font-size: 0.85rem;
+      color: #7b49ff;
+      background-color: #ebe1ff;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    /* Participants list */
+    .participants-list {
+      border-radius: 8px;
+      background-color: #fff;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .participants-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .participants-list li:last-child {
+      border-bottom: none;
+    }
+    .nickname {
+      font-weight: 500;
+    }
+    .distance {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Host controls buttons or links */
+    .host-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .host-controls button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .host-controls button:hover {
+      background-color: #f0f0f0;
+    }
+    /* Optional arrow icon or text */
+    .arrow {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <h1>Group Dashboard</h1>
+      <button class="exit-button">Exit Group</button>
+    </div>
+
+    <!-- Participants Card -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Participants</h2>
+        <div class="active-count">4 Active</div>
+      </div>
+      <ul class="participants-list">
+        <li>
+          <span class="nickname">John (You)</span>
+          <span class="distance">0 km</span>
+        </li>
+        <li>
+          <span class="nickname">Sarah</span>
+          <span class="distance">2.5 km</span>
+        </li>
+        <li>
+          <span class="nickname">Mike</span>
+          <span class="distance">4.8 km</span>
+        </li>
+        <li>
+          <span class="nickname">Lisa</span>
+          <span class="distance">1.2 km</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Host Controls Card -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Host Controls</h2>
+      </div>
+      <div class="host-controls">
+        <button>
+          <span>Set Destination</span>
+          <span class="arrow">&#9654;</span>
+        </button>
+        <button>
+          <span>Set Meetup Point</span>
+          <span class="arrow">&#9654;</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

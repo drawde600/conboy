@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Map View</title>
+  
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-1AtoDRjtWc0NfE3fnx8ywTDZmKVD+Ei0d1fZD9oGGHI="
+    crossorigin=""
+  />
+  
+  <!-- Basic Page Styling -->
+  <style>
+    /* Reset default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      position: relative; /* So absolutely-positioned elements can be placed inside */
+      min-height: 100vh;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      padding: 16px;
+      z-index: 999; /* Make sure it stays on top of the map */
+      border-bottom: 1px solid #eee;
+    }
+    .top-bar h1 {
+      font-size: 1.2rem;
+      color: #7b49ff;
+    }
+    .exit-button {
+      background-color: #ff6b6b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .exit-button:hover {
+      background-color: #e65a5a;
+    }
+
+    /* Map Container */
+    #map {
+      width: 100%;
+      height: calc(100vh - 60px); /* Fill remaining height under the top bar */
+      position: relative;
+      z-index: 1; /* Ensure the map is below the top bar */
+    }
+
+    /* Participants Card (Floating) */
+    .participants-card {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px; /* For a narrower card, remove this and use a fixed width. */
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 999; /* Above the map but below the top bar */
+      padding: 16px;
+    }
+    .participants-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .participants-header h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .active-count {
+      font-size: 0.85rem;
+      color: #7b49ff;
+      background-color: #ebe1ff;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+    .participants-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .participants-table th,
+    .participants-table td {
+      text-align: left;
+      padding: 8px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #eee;
+    }
+    .participants-table th {
+      color: #666;
+      font-weight: 500;
+    }
+    .participants-table td {
+      color: #555;
+    }
+    .participants-table tr:last-child td {
+      border-bottom: none; /* Remove border on last row */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <h1>Map View</h1>
+    <button class="exit-button">Exit Group</button>
+  </div>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Participants Card -->
+  <div class="participants-card">
+    <div class="participants-header">
+      <h2>Participants</h2>
+      <div class="active-count">4 Active</div>
+    </div>
+    <table class="participants-table">
+      <thead>
+        <tr>
+          <th>Nickname</th>
+          <th>Distance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John (You)</td>
+          <td>0 km</td>
+        </tr>
+        <tr>
+          <td>Sarah</td>
+          <td>2.5 km</td>
+        </tr>
+        <tr>
+          <td>Mike</td>
+          <td>4.8 km</td>
+        </tr>
+        <tr>
+          <td>Lisa</td>
+          <td>1.2 km</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-QV1M/XN1P85fTW0C2j8WrESEYPhzPJYdbQoJ2V+2Nig="
+    crossorigin="">
+  </script>
+
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([51.505, -0.09], 13);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // Example participant markers (use real coords in your app)
+    const participants = [
+      {
+        nickname: 'John (You)',
+        coords: [51.505, -0.09],
+      },
+      {
+        nickname: 'Sarah',
+        coords: [51.51, -0.1],
+      },
+      {
+        nickname: 'Mike',
+        coords: [51.49, -0.08],
+      },
+      {
+        nickname: 'Lisa',
+        coords: [51.507, -0.095],
+      },
+    ];
+
+    // Add markers to the map
+    participants.forEach(participant => {
+      L.marker(participant.coords)
+        .addTo(map)
+        .bindPopup(`<b>${participant.nickname}</b>`);
+    });
+  </script>
+</body>
+</html>

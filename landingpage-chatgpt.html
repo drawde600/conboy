@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conboy - Landing Page</title>
+  <style>
+    /* Basic resets */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 400px;      /* Limit width on larger screens */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      min-height: 100vh;     /* Fill the screen vertically on mobile */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Header / Logo */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      color: #7b49ff;        /* Purple color for the app name */
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    /* Welcome Title and Subtitle */
+    .title {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 20px;
+      padding: 0 10px;       /* Some side padding for readability */
+    }
+
+    /* Accordion Style */
+    .accordion {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 10px 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .accordion-header:hover {
+      background-color: #f0f0f0;
+    }
+
+    .accordion-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    /* Rotate arrow when active */
+    .accordion.active .accordion-arrow {
+      transform: rotate(90deg);
+    }
+
+    /* Accordion content hidden by default */
+    .accordion-content {
+      display: none;
+      padding: 0 16px 16px 16px;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* Show content when accordion is active */
+    .accordion.active .accordion-content {
+      display: block;
+    }
+
+    /* Footer hint */
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header / Logo -->
+    <div class="header">
+      <!-- Replace with an actual logo if you have one -->
+      <h1>Conboy</h1>
+    </div>
+
+    <!-- Welcome Title & Subtitle -->
+    <div class="title">Welcome to Conboy</div>
+    <div class="subtitle">
+      Track your group's location in real-time. Perfect for coordinating meetups and shared rides.
+    </div>
+
+    <!-- Accordion Section: Create a Group -->
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span>Create a Group</span>
+        <span class="accordion-arrow">&#9654;</span> 
+        <!-- &#9654; is the right-pointing triangle. You can replace it with any icon or arrow. -->
+      </div>
+      <div class="accordion-content">
+        <!-- Add actual content or form fields for "Create a Group" here -->
+        <p>This section could contain fields or instructions to create a group.</p>
+      </div>
+    </div>
+
+    <!-- Accordion Section: Join a Group -->
+    <div class="accordion" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span>Join a Group</span>
+        <span class="accordion-arrow">&#9654;</span>
+      </div>
+      <div class="accordion-content">
+        <!-- Add actual content or form fields for "Join a Group" here -->
+        <p>This section could contain fields or instructions to join an existing group.</p>
+      </div>
+    </div>
+
+    <!-- Footer Hint -->
+    <div class="footer">
+      Tap sections to expand or collapse
+    </div>
+  </div>
+
+  <!-- Simple JavaScript for toggling accordions -->
+  <script>
+    function toggleAccordion(element) {
+      element.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

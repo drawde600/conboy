@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Group</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 350px;
+      max-width: 90%;
+      margin: 40px auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background-color: #7b49ff; /* Purple header color */
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+
+    /* Form */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin: 16px;
+    }
+
+    .form-group label {
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #333333;
+    }
+
+    .form-group input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    /* Button */
+    .button-container {
+      text-align: center;
+      margin: 16px;
+    }
+
+    .generate-btn {
+      background-color: #7b49ff;
+      color: #ffffff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .generate-btn:hover {
+      background-color: #693ddf;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      Create Group
+    </div>
+
+    <!-- Form fields -->
+    <form>
+      <div class="form-group">
+        <label for="creatorNickname">Creator's Nickname</label>
+        <input type="text" id="creatorNickname" name="creatorNickname" placeholder="Enter your nickname">
+      </div>
+
+      <div class="form-group">
+        <label for="groupName">Group Name</label>
+        <input type="text" id="groupName" name="groupName" placeholder="Enter group name">
+      </div>
+
+      <div class="form-group">
+        <label for="accessCode">Access Code</label>
+        <input type="text" id="accessCode" name="accessCode" placeholder="Enter access code">
+      </div>
+
+      <div class="form-group">
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" name="destination" placeholder="Enter destination">
+      </div>
+
+      <div class="form-group">
+        <label for="meetupPoint">Meetup Point</label>
+        <input type="text" id="meetupPoint" name="meetupPoint" placeholder="Enter meetup point">
+      </div>
+
+      <!-- Button -->
+      <div class="button-container">
+        <button type="submit" class="generate-btn">Generate Shareable Link</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
